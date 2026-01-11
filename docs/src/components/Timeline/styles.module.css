@@ -1,0 +1,28 @@
+.timelineContainer {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2rem;
+  border-left: 2px solid var(--ifm-color-emphasis-300); /* Docusaurus themed line */
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timelineDot {
+  position: absolute;
+  left: calc(-2rem - 6px); /* Centers dot on the line */
+  width: 12px;
+  height: 12px;
+  background-color: var(--ifm-color-primary);
+  border-radius: 50%;
+  top: 5px;
+}
+
+.timelineContent {
+  padding: 0.5rem 1rem;
+  background: var(--ifm-card-background-color);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+}
