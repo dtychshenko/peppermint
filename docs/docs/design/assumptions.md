@@ -36,7 +36,14 @@ sidebar_position: 2
 ## Out of Scope
 
 - Real bank integrations, including Plaid
+- Multi-account support
 - Multi-currency handling
 - Tax optimization
 - Fraud detection
-“
+  “
+
+## What I would implement next
+
+- Real bank integrations, including Plaid
+- Multi-account support
+- Multi-currency handling
