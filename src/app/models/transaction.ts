@@ -1,3 +1,5 @@
+import { CategoryId } from "./category";
+
 /** Unique identifier for a transaction */
 export type TransactionId = string;
 
@@ -18,7 +20,7 @@ export interface Transaction {
   amount: number;
 
   /** Category assigned by the user or AI */
-  category_id: string;
+  category_id: CategoryId;
 
   /** Name of the payee, if available */
   payee: string;

@@ -1,0 +1,12 @@
+.next/
+out/
+build/
+node_modules/
+public/
+package-lock.json
+yarn.lock
+*.md
+docs/.docusaurus/
+docs/build/
+docs/.cache/
+
