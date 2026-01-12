@@ -1,11 +1,13 @@
 <svg
-  width="200"
-  height="200"
-  viewBox="2 10 60 60"
+  width="320"
+  height="80"
+  viewBox="0 0 320 80"
+  fill="none"
   xmlns="http://www.w3.org/2000/svg"
   role="img"
   aria-label="Peppermint logo"
 >
+  <!-- Peppermint Icon -->
   <g transform="translate(0,8)">
     <circle cx="32" cy="32" r="28" fill="#1F8F4A" />
     <g fill="white" transform="translate(32,32)">
@@ -17,4 +19,16 @@
       <path d="M-17 17 C-6 14 -2 8 0 0 C-8 2 -14 6 -17 17Z" />
     </g>
   </g>
+
+  <!-- Wordmark -->
+  <text
+    x="80"
+    y="52"
+    fill="#1F8F4A"
+    font-size="40"
+    font-weight="600"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+  >
+    Peppermint
+  </text>
 </svg>

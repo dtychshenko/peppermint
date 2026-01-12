@@ -14,7 +14,8 @@ function HomepageHeader() {
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          <img src="/img/logo-inverted.svg" alt="Peppermint logo" style={{ height: "0.75em" }} />
+          &nbsp;{siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
