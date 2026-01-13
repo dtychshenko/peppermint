@@ -11,12 +11,13 @@
     "docs:dev": "yarn --cwd docs start",
     "docs:build": "yarn --cwd docs build",
     "docs:serve": "yarn --cwd docs serve",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "sass": "^1.97.2"
   },
   "devDependencies": {
     "@types/node": "^20",

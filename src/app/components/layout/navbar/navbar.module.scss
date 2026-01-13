@@ -1,0 +1,32 @@
+.navbar {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #d4d4d5;
+}
+
+.navbarFull {
+  display: flex;
+  width: 90vw;
+  max-width: 160em;
+  min-height: 4em;
+  margin: 0 auto;
+
+  .logo {
+    height: 100%;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+
+    li {
+      margin: 1em;
+    }
+  }
+}
