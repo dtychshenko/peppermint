@@ -42,12 +42,16 @@ sidebar_position: 2
 - **Latency**: Category updates must be reflected in the UI within 100ms (Optimistic UI).
 
 ### Usability & Experience
-- **"Wowed" Aesthetics**: Design must use modern best practices (Glassmorphism, Micro-animations, Dark Mode).
-- **Graceful Degradation**: System must handle simulated "slow network" states (loading skeletons) without blocking the UI.
+- Design must use modern best practices. 
+- Micro-animations, dark mode and accessibility considerations.
+- System must handle simulated "slow network" states without blocking the UI, displaying in-progress indicators as needed and allowing continued interaction.
+- Globalization support.
+- The UI is intentionally not mobile-first. Mobile responsiveness is strived for, but the mobile experience is better served by a dedicated native app.
 
 ### Privacy & Security
-- **Local-First Processing**: For the POC, data processing happens in the browser to ensure speed and privacy.
-- No sensitive financial data is permanently stored on a server for this demo.
+- Data is encrypyted at rest and in transit.
+- No sensitive data is logged.
+- Mock backend does not persist data beyond session.
 
 ### Reliability
 - Use of Error Boundaries to catch React rendering errors.

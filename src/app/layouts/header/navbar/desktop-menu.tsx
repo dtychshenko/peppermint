@@ -8,10 +8,10 @@ export default function DesktopMenu() {
       </a>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <a href="/">Transactions</a>
         </li>
         <li>
-          <a href="/about">About</a>
+          <a href="/upload">Upload</a>
         </li>
       </ul>
     </div>

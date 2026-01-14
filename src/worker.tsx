@@ -3,8 +3,8 @@ import { defineApp } from "rwsdk/worker";
 import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
-import About from "./app/pages/About";
-import Home from "./app/pages/Home";
+import Transactions from "./app/pages/Transactions";
+import Upload from "./app/pages/Upload";
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-empty-object-type -- todo: describe ctx type
 export type AppContext = {};
@@ -15,5 +15,5 @@ export default defineApp([
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions -- todo: setup ctx here
     ctx;
   },
-  render(Document, [layout(AppLayout, [route("/", Home), route("/about", About)])]),
+  render(Document, [layout(AppLayout, [route("/", Transactions), route("/upload", Upload)])]),
 ]);
