@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # System Assumptions
@@ -25,10 +25,8 @@ sidebar_position: 2
 ## AI & Categorization Assumptions
 
 1. **Accuracy vs Latency**:
-
-- **Tier 1 (Local)**: Simple regex/keyword matching happens instantly (&lt;16ms). Accuracy: Low/Medium.
-- **Tier 2 (Cloud AI)**: LLM-based categorization happens asynchronously. Accuracy: High. Latency: 1-2s per batch.
-
+    - **Tier 1 (Local)**: Simple regex/keyword matching happens instantly (&lt;16ms). Accuracy: Low/Medium.
+    - **Tier 2 (Cloud AI)**: LLM-based categorization happens asynchronously. Accuracy: High. Latency: 1-2s per batch.
 2. **"Real-Time" Definition**: The UI must update _optimistically_. When a user changes a category, the chart updates immediately, even if the backend is slow. Overrides feed back into training. 80–90% accuracy is acceptable initially. Categorization service may be slow or unavailable
 3. **Cost**: We assume we want to minimize LLM calls. We will only send "Uncategorized" or "Low Confidence" transactions to the expensive AI model.
 4. AI failures are non-fatal. System must gracefully fall back to Tier 1 (Local) categorization.
@@ -40,10 +38,3 @@ sidebar_position: 2
 - Multi-currency handling
 - Tax optimization
 - Fraud detection
-  “
-
-## What I would implement next
-
-- Real bank integrations, including Plaid
-- Multi-account support
-- Multi-currency handling

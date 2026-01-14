@@ -17,3 +17,7 @@ Peppermint is a Personal Finance Dashboard designed to help users manage their t
 ## Project Goals
 
 The main objective is to provide a seamless and "spicy" experience for users to track their finances, starting with a coded Proof of Concept and expanding into a full-scale application.
+
+## Environments
+- **Staging**: https://peppermint-staging.peppermint-app.workers.dev/
+- **Production**: https://peppermint.peppermint-app.workers.dev/
