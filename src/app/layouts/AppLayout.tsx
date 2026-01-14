@@ -10,7 +10,7 @@ export function AppLayout({ children }: LayoutProps) {
           <Navbar />
         </header>
         <main>{children}</main>
-        <footer>&copy; {new Date().getFullYear()}</footer>
+        {/* <footer>&copy; {new Date().getFullYear()}</footer> */}
       </div>
     </StrictMode>
   );
