@@ -25,7 +25,9 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "dtychshenko", // Usually your GitHub org/user name.
-  projectName: "peppermint", // Usually your repo name.
+  projectName: "dtychshenko.github.io", // Usually your repo name.
+  deploymentBranch: "peppermint",
+  trailingSlash: false,
 
   onBrokenLinks: "throw",
 
@@ -85,25 +87,13 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
+              label: "Introduction",
               to: "/docs/intro",
             },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
+            { label: "Design", to: "/docs/category/design" },
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
+              label: "About Dmitriy",
+              to: "/docs/about-me",
             },
           ],
         },
@@ -111,17 +101,13 @@ const config: Config = {
           title: "More",
           items: [
             {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/dtychshenko/peppermint",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Peppermint. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
