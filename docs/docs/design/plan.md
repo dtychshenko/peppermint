@@ -46,9 +46,10 @@ User reviews transactions and can manually override categories. To confirm a tra
 A feature flag is added to enable AI-native categorization. When enabled, the categorization service is enhanced to use a pre-trained ML model to categorize transactions. The model is invoked asynchronously via a queue after the static rules categorization is complete. The model returns the category along with a confidence score. If the confidence score is above a threshold, the transaction is marked reviewed automatically.
 
 If categorization via ML model fails, the transaction is categorized using static rules.
+If the static rules have no match, the transaction is marked as "Uncategorized" and requires manual review by the user.
 
 ## Stage 4: Reporting
-- A widget is added that shows monthly spending by category. Users can select a month and view a breakdown of spending by category.
+A widget is added that shows monthly spending by category. Users can select a month and view a breakdown of spending by category.
 
 1. A dropdown is added that allows users to select a month/year.
 2. When a month is selected, the front end queries the transaction service for transactions in that month.
