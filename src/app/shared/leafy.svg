@@ -4,7 +4,8 @@
   viewBox="0 0 240 320"
   xmlns="http://www.w3.org/2000/svg"
   role="img"
-  aria-label="Peppermint leaf mascot giving thumbs up"
+  aria-label="Peppermint leaf mascot smiling"
+  id="leafy"
 >
 
   <!-- Leaf body -->

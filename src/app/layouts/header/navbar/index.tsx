@@ -8,13 +8,17 @@ import styles from "./navbar.module.css";
 
 const mobileBreakpoint = 768;
 
-export default function Navbar() {
+interface NavbarProps {
+  path: string;
+}
+
+export default function Navbar({ path }: NavbarProps) {
   const isMobile = useMediaQuery(`(max-width: ${mobileBreakpoint}px)`, { defaultValue: false });
 
   return (
     <nav className={styles.navbar}>
       <Activity mode={isMobile ? "hidden" : "visible"}>
-        <DesktopMenu />
+        <DesktopMenu path={path} />
       </Activity>
       <Activity mode={isMobile ? "visible" : "hidden"}>
         <MobileMenu />

@@ -1,18 +1,22 @@
+import { navigation } from "../../../config/navigation";
 import styles from "./navbar.module.css";
 
-export default function DesktopMenu() {
+interface DesktopMenuProps {
+  path: string;
+}
+
+export default function DesktopMenu({ path }: DesktopMenuProps) {
   return (
     <div className={styles.navbarFull}>
       <a href="/">
         <img className={styles.logo} src="/logo-full.svg" alt="Peppermint logo" />
       </a>
       <ul>
-        <li>
-          <a href="/">Transactions</a>
-        </li>
-        <li>
-          <a href="/import">Import</a>
-        </li>
+        {navigation.config.map((item) => (
+          <li key={item.href} className={path === item.href ? styles.active : ""}>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
       </ul>
     </div>
   );

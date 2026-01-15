@@ -5165,12 +5165,12 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-dom@19.2.3:
-  version "19.2.3"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.3.tgz#f0b61d7e5c4a86773889fcc1853af3ed5f215b17"
-  integrity sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==
+react-dom@^19.3.0-canary-4a3d993e-20260114:
+  version "19.3.0-canary-4a3d993e-20260114"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.3.0-canary-4a3d993e-20260114.tgz#f95467eb0320d679491ab7c0760c1230a0f615c6"
+  integrity sha512-yaXe7WBISB4c24SxYSRjrpS4u7b9QlZfOYN1VXceDIQetTdwVosKMsiPrFmVMwbd3tStcpR7SHFOw/9jBF7+5w==
   dependencies:
-    scheduler "^0.27.0"
+    scheduler "0.28.0-canary-4a3d993e-20260114"
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -5187,19 +5187,19 @@ react-refresh@^0.17.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.17.0.tgz#b7e579c3657f23d04eccbe4ad2e58a8ed51e7e53"
   integrity sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==
 
-react-server-dom-webpack@19.2.3:
-  version "19.2.3"
-  resolved "https://registry.yarnpkg.com/react-server-dom-webpack/-/react-server-dom-webpack-19.2.3.tgz#5d7e22bae55d196ed3f2d44e3bbdcd445085569f"
-  integrity sha512-ifo7aqqdNJyV6U2zuvvWX4rRQ51pbleuUFNG7ZYhIuSuWZzQPbfmYv11GNsyJm/3uGNbt8buJ9wmoISn/uOAfw==
+react-server-dom-webpack@^19.3.0-canary-4a3d993e-20260114:
+  version "19.3.0-canary-4a3d993e-20260114"
+  resolved "https://registry.yarnpkg.com/react-server-dom-webpack/-/react-server-dom-webpack-19.3.0-canary-4a3d993e-20260114.tgz#400d0887a27861f75d01bd7d578dbfd0b28605fb"
+  integrity sha512-EFxMbT6SJJuyuqJT12FcZ87RRNxFuSs8nIcjZAvSH1bReTkjRw4sufUKjoOCxYIA1UruhnMhotrUAHkQjTTpXg==
   dependencies:
     acorn-loose "^8.3.0"
     neo-async "^2.6.1"
     webpack-sources "^3.2.0"
 
-react@19.2.3:
-  version "19.2.3"
-  resolved "https://registry.yarnpkg.com/react/-/react-19.2.3.tgz#d83e5e8e7a258cf6b4fe28640515f99b87cd19b8"
-  integrity sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==
+react@^19.3.0-canary-4a3d993e-20260114:
+  version "19.3.0-canary-4a3d993e-20260114"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-4a3d993e-20260114.tgz#0a44228f88f74b0ad775e85f2f0878d355638d9a"
+  integrity sha512-lBKsqLDLJZIDu7bGBRepvSVKGoLGTChttssUAxYhkcCng5nMXSMdaHzf3kalxmJzdGcS4kppM1bxVTu+oAQCvQ==
 
 readable-stream@^2.3.0, readable-stream@^2.3.5:
   version "2.3.8"
@@ -5507,10 +5507,10 @@ safe-regex-test@^1.0.3, safe-regex-test@^1.1.0:
     es-errors "^1.3.0"
     is-regex "^1.2.1"
 
-scheduler@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.27.0.tgz#0c4ef82d67d1e5c1e359e8fc76d3a87f045fe5bd"
-  integrity sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==
+scheduler@0.28.0-canary-4a3d993e-20260114:
+  version "0.28.0-canary-4a3d993e-20260114"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.28.0-canary-4a3d993e-20260114.tgz#c73be07046f7b0d4d3bef3f4fbc3105ea012c538"
+  integrity sha512-PLC4UCLLesSoXoyDku3+0ThFiuzOflpsWMih1JzyClGA5bqgW8lLfPXsqxcYF/1BPHyD2+xXDDWg7QY/4EaAfQ==
 
 seek-bzip@^1.0.5:
   version "1.0.6"
