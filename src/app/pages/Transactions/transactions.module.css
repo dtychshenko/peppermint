@@ -6,25 +6,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 1em;
+  margin-top: 2em;
+  color: var(--text-secondary);
 }
 
 :global(#rightArm) {
   transform-box: fill-box;
-  transform-origin: 0% 50%;
-  animation: thumbsUp 2s ease-in-out forwards;
+  transform-origin: 50% 0%;
+  animation: shrugRight 2s ease-in-out forwards;
 }
 
-@keyframes thumbsUp {
+:global(#leftArm) {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: shrugLeft 2s ease-in-out forwards;
+}
+
+@media (min-width: 768px) {
+  .emptyContainer {
+    margin-top: 5em;
+  }
+}
+
+@keyframes shrugRight {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateY(0);
   }
-  40% {
-    transform: rotate(-25deg);
+  20% {
+    transform: rotate(-50deg) translateY(-10px);
   }
-  60% {
-    transform: rotate(-25deg);
+  80% {
+    transform: rotate(-50deg) translateY(-10px);
   }
   100% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
+@keyframes shrugLeft {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  20% {
+    transform: rotate(50deg) translateY(-10px);
+  }
+  80% {
+    transform: rotate(50deg) translateY(-10px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
   }
 }

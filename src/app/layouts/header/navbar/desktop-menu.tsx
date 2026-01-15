@@ -11,7 +11,7 @@ export default function DesktopMenu() {
           <a href="/">Transactions</a>
         </li>
         <li>
-          <a href="/upload">Upload</a>
+          <a href="/import">Import</a>
         </li>
       </ul>
     </div>

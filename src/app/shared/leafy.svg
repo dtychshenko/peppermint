@@ -41,15 +41,9 @@
   />
 
   <!-- Face -->
-  <circle cx="95" cy="70" r="5" fill="#1A1A1A" />
-  <circle cx="145" cy="70" r="5" fill="#1A1A1A" />
-  <path
-    d="M95 95 Q120 110 145 95"
-    stroke="#1A1A1A"
-    stroke-width="4"
-    fill="none"
-    stroke-linecap="round"
-  />
+  <circle cx="95" cy="70" r="5" fill="#1A1A1A" id="leftEye" class="leafy-eye blink" />
+  <circle cx="145" cy="70" r="5" fill="#1A1A1A" id="rightEye" class="leafy-eye blink" />
+  <path d="M95 95 Q120 110 145 95" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
 
   <!-- Left arm -->
   <path
@@ -95,4 +89,20 @@
   <ellipse cx="98" cy="318" rx="10" ry="4" fill="#1A1A1A" />
   <ellipse cx="142" cy="318" rx="10" ry="4" fill="#1A1A1A" />
 
+  <style>
+    .leafy-eye.blink {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: blink-animation 3s infinite;
+    }
+
+    @keyframes blink-animation {
+      0%, 90%, 100% {
+        transform: scaleY(1);
+      }
+      95% {
+        transform: scaleY(0.1); 
+      }
+    }
+  </style>
 </svg>
