@@ -1,4 +1,7 @@
+"use client";
+
 import { navigation } from "../../../config/navigation";
+import DarkThemeToggle from "./DarkThemeToggle";
 import styles from "./navbar.module.css";
 
 interface DesktopMenuProps {
@@ -18,6 +21,8 @@ export default function DesktopMenu({ path }: DesktopMenuProps) {
           </li>
         ))}
       </ul>
+      <div style={{ flexGrow: 1 }} />
+      <DarkThemeToggle />
     </div>
   );
 }

@@ -42,7 +42,9 @@ const theme = createTheme({
 export function ClientMantineProvider({ children }: { children: ReactNode }) {
   return (
     <div suppressHydrationWarning>
-      <MantineProvider theme={theme}>{children}</MantineProvider>
+      <MantineProvider theme={theme} defaultColorScheme="auto">
+        {children}
+      </MantineProvider>
     </div>
   );
 }

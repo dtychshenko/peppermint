@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  background: #fff;
+  border-bottom: 1px solid var(--mantine-color-default-border);
 }
 
 .navbarFull {
@@ -9,6 +9,7 @@
   max-width: 160em;
   height: 4em;
   margin: 0 auto;
+  align-items: center;
 }
 
 .navbarFull .logo {
@@ -18,7 +19,6 @@
 .navbarFull ul {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
