@@ -74,7 +74,7 @@ const config: Config = {
           label: "Docs",
         },
         {
-          href: "https://peppermint-staging.peppermint-app.workers.dev/",
+          href: "https://peppermint.peppermint-app.workers.dev/",
           label: "App",
           position: "left",
           target: "_blank",
