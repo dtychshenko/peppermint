@@ -1,7 +1,7 @@
 "use client";
 
+import { useMediaQuery } from "@mantine/hooks";
 import { Activity } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import DesktopMenu from "./desktop-menu";
 import MobileMenu from "./mobile-menu";
 import styles from "./navbar.module.css";
@@ -13,7 +13,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ path }: NavbarProps) {
-  const isMobile = useMediaQuery(`(max-width: ${mobileBreakpoint}px)`, { defaultValue: false });
+  const isMobile = useMediaQuery(`(max-width: ${mobileBreakpoint}px)`);
 
   return (
     <nav className={styles.navbar}>
