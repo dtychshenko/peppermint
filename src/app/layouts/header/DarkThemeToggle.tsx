@@ -2,7 +2,7 @@ import { ActionIcon, useComputedColorScheme, useMantineColorScheme } from "@mant
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import { Activity } from "react";
 
-export default function DarkThemeToggle() {
+export function DarkThemeToggle() {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme("light", { getInitialValueInEffect: true });
   const isLight = computedColorScheme === "light";
@@ -11,7 +11,8 @@ export default function DarkThemeToggle() {
     <ActionIcon
       onClick={() => setColorScheme(isLight ? "dark" : "light")}
       variant="default"
-      size="xl"
+      size="lg"
+      visibleFrom="xs"
       aria-label="Toggle color scheme">
       <Activity mode={isLight ? "visible" : "hidden"}>
         <IconSun stroke={1.5} />

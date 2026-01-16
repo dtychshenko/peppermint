@@ -1,14 +1,5 @@
 .mainContainer {
-  display: block;
-}
-
-.emptyContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  gap: 1em;
-  margin-top: 2em;
 }
 
 :global(#leafy #rightArm) {
@@ -21,12 +12,6 @@
   transform-box: fill-box;
   transform-origin: 50% 0%;
   animation: shrugLeft 2s ease-in-out forwards;
-}
-
-@media (min-width: 768px) {
-  .emptyContainer {
-    margin-top: 5em;
-  }
 }
 
 @keyframes shrugRight {
