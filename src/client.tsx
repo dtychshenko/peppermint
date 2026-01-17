@@ -11,19 +11,15 @@ const handleOnHydrated = () => {
 
 const redirectToError = () => {
   // Use replace to avoid keeping the broken page in history
-  window.location.replace("/error");
+  if (!window.location.pathname.startsWith("/error")) {
+    window.location.replace("/error");
+  }
 };
 
 const hydrateRootOptions = {
   // Catch React-specific uncaught errors (rendering, hydration)
   onUncaughtError: (error: unknown, errorInfo: unknown) => {
     console.error("React uncaught error:", error, errorInfo);
-    redirectToError();
-  },
-
-  // Catch errors caught by error boundaries
-  onCaughtError: (error: unknown, errorInfo: unknown) => {
-    console.error("React caught error:", error, errorInfo);
     redirectToError();
   },
 };
@@ -33,11 +29,9 @@ initClient({ hydrateRootOptions, handleResponse, onHydrated: handleOnHydrated })
 // Catch imperative errors (event handlers, timeouts, etc.)
 window.addEventListener("error", (event) => {
   console.error("Global error caught:", event.message);
-  redirectToError();
 });
 
 // Catch unhandled promise rejections
 window.addEventListener("unhandledrejection", (event) => {
   console.error("Unhandled promise rejection:", event.reason);
-  redirectToError();
 });
