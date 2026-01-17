@@ -23,7 +23,7 @@ export function Header({ path, opened, toggle }: Props) {
         <ThemeSwitch />
       </Box>
       <Burger
-        color="peppermint"
+        color="peppermint.7"
         opened={opened}
         hiddenFrom={MOBILE_BREAKPOINT}
         onClick={toggle}

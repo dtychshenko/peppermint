@@ -9,7 +9,7 @@ const theme = createTheme({
   white: "#fcfcfc",
   black: "#222222",
   autoContrast: true,
-  fontFamily: '"Noto Sans", Arial, Helvetica, sans-serif',
+  fontFamily: 'Inter, "Noto Sans", Arial, Helvetica, sans-serif',
   colors: {
     peppermint: [
       "#eefcf5",

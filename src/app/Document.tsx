@@ -1,5 +1,4 @@
 import type { DocumentProps } from "rwsdk/router";
-import styles from "./global.css?url";
 
 export default function Document({ children }: DocumentProps) {
   return (
@@ -11,7 +10,12 @@ export default function Document({ children }: DocumentProps) {
         <meta name="description" content="A spicy Personal Finance Dashboard" />
         <link rel="modulepreload" href="/src/client.tsx" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href={styles} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        />
       </head>
       <body>
         <div id="root">{children}</div>
