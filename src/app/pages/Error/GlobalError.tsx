@@ -1,6 +1,6 @@
 import LeafyDead from "../../shared/leafy-dead.svg?react";
 
-export default function ZeroState() {
+export default function GlobalError() {
   return (
     <div style={{ textAlign: "center" }}>
       <LeafyDead />

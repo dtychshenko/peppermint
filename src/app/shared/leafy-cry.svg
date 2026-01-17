@@ -1,0 +1,98 @@
+<svg
+  width="240"
+  height="320"
+  viewBox="0 0 240 320"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Peppermint leaf mascot smiling"
+  id="leafy"
+>
+
+  <!-- Leaf body -->
+  <path
+    d="M120 20
+       C70 40, 40 90, 45 150
+       C50 220, 90 270, 120 290
+       C150 270, 190 220, 195 150
+       C200 90, 170 40, 120 20Z"
+    fill="#2E9E4D"
+  />
+
+  <!-- Leaf veins -->
+  <path
+    d="M120 265 V130"
+    stroke="#6BCF9A"
+    stroke-width="6"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <path
+    d="M120 260 C145 240 155 220 160 200"
+    stroke="#6BCF9A"
+    stroke-width="4"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+  <path
+    d="M120 230 C95 210 85 190 80 170"
+    stroke="#6BCF9A"
+    stroke-width="4"
+    stroke-linecap="round"
+    opacity="0.6"
+  />
+
+  <!-- Face -->
+  <path d="M85 75 Q95 65 100 70" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="leftEye" class="leafy-eye" />
+  <path d="M140 70 Q145 65 155 75" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="rightEye" class="leafy-eye" />
+  <path d="M95 95 Q120 80 145 95" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
+
+  <!-- Tears -->
+  <circle cx="92" cy="85" r="2.5" fill="#4A90E2" opacity="0.7" />
+  <path d="M92 87 Q91 95 92 105" stroke="#4A90E2" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7" />
+  <circle cx="148" cy="85" r="2.5" fill="#4A90E2" opacity="0.7" />
+  <path d="M148 87 Q149 95 148 105" stroke="#4A90E2" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7" />
+
+  <!-- Left arm -->
+  <path
+    d="M50 165 C20 155 20 130 40 120"
+    stroke="#1A1A1A"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    id="leftArm"
+  />
+
+  <!-- Right arm -->
+  <path
+    d="M190 165 C220 155 220 130 200 120"
+    stroke="#1A1A1A"
+    stroke-width="6"
+    stroke-linecap="round"
+    fill="none"
+    id="rightArm"
+  />
+
+  <!-- Legs -->
+  <line
+    x1="105"
+    y1="285"
+    x2="105"
+    y2="315"
+    stroke="#1A1A1A"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+  <line
+    x1="135"
+    y1="285"
+    x2="135"
+    y2="315"
+    stroke="#1A1A1A"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+  <!-- Feet -->
+  <ellipse cx="98" cy="318" rx="10" ry="4" fill="#1A1A1A" />
+  <ellipse cx="142" cy="318" rx="10" ry="4" fill="#1A1A1A" />
+</svg>
