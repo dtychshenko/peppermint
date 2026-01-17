@@ -33,7 +33,7 @@ export function AppLayoutClient({ path, children }: PropsWithChildren<Props>) {
         <Container>{children}</Container>
       </AppShell.Main>
 
-      <AppShell.Footer>
+      <AppShell.Footer withBorder={false}>
         <Footer />
       </AppShell.Footer>
     </AppShell>
