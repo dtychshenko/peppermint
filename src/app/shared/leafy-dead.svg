@@ -42,9 +42,9 @@
   />
 
   <!-- Face -->
-  <circle cx="95" cy="70" r="5" fill="#1A1A1A" id="leftEye" class="leafy-eye blink" />
-  <circle cx="145" cy="70" r="5" fill="#1A1A1A" id="rightEye" class="leafy-eye blink" />
-  <path d="M95 95 Q120 110 145 95" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
+  <path d="M90 65 L100 75 M100 65 L90 75" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="leftEye" class="leafy-eye" />
+  <path d="M140 65 L150 75 M150 65 L140 75" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="rightEye" class="leafy-eye" />
+  <path d="M95 95 Q120 80 145 95" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
 
   <!-- Left arm -->
   <path
@@ -54,7 +54,16 @@
     stroke-linecap="round"
     fill="none"
     id="leftArm"
-  />
+  >
+    <animate
+      attributeName="d"
+      values="M50 165 C20 155 20 130 40 120;M50 165 L40 220"
+      dur="2s"
+      fill="freeze"
+      calcMode="spline"
+      keySplines="0.25 0.46 0.45 0.94"
+    />
+  </path>
 
   <!-- Right arm -->
   <path
@@ -64,7 +73,16 @@
     stroke-linecap="round"
     fill="none"
     id="rightArm"
-  />
+  >
+    <animate
+      attributeName="d"
+      values="M190 165 C220 155 220 130 200 120;M190 165 L200 220"
+      dur="2s"
+      fill="freeze"
+      calcMode="spline"
+      keySplines="0.25 0.46 0.45 0.94"
+    />
+  </path>
 
   <!-- Legs -->
   <line
@@ -89,21 +107,4 @@
   <!-- Feet -->
   <ellipse cx="98" cy="318" rx="10" ry="4" fill="#1A1A1A" />
   <ellipse cx="142" cy="318" rx="10" ry="4" fill="#1A1A1A" />
-
-  <style>
-    .leafy-eye.blink {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: blink-animation 3s infinite;
-    }
-
-    @keyframes blink-animation {
-      0%, 90%, 100% {
-        transform: scaleY(1);
-      }
-      95% {
-        transform: scaleY(0.1); 
-      }
-    }
-  </style>
 </svg>

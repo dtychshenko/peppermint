@@ -3,6 +3,7 @@ import { defineApp } from "rwsdk/worker";
 import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
+import ErrorPage from "./app/pages/Error";
 import Import from "./app/pages/Import";
 import Transactions from "./app/pages/Transactions";
 
@@ -15,5 +16,11 @@ export default defineApp([
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions -- todo: setup ctx here
     ctx;
   },
-  render(Document, [layout(AppLayout, [route("/", Transactions), route("/import", Import)])]),
+  render(Document, [
+    layout(AppLayout, [
+      route("/", Transactions),
+      route("/import", Import),
+      route("/error", ErrorPage),
+    ]),
+  ]),
 ]);
