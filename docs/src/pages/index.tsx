@@ -25,7 +25,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to={siteConfig.url}
             style={{ marginLeft: "1rem" }}>
-            Access Staging <IconExternalLink />
+            App <IconExternalLink />
           </Link>
         </div>
       </div>
