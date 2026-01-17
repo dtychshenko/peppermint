@@ -1,3 +1,5 @@
+"use server"; // Just being explicit to remind that this is a server component
+
 import { StrictMode } from "react";
 import type { LayoutProps } from "rwsdk/router";
 import { AppLayoutClient } from "./AppLayoutClient";

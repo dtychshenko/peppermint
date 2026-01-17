@@ -9,7 +9,7 @@
 >
   <!-- Peppermint Icon -->
   <g transform="translate(0,8)">
-    <circle cx="32" cy="32" r="28" fill="#ffffff" />
+    <circle cx="32" cy="32" r="28" fill="var(--mantine-color-white, #ffffff)" />
     <g fill="#1F8F4A" transform="translate(32,32)">
       <path d="M0-24 C6-14 6-6 0 0 C-6-6 -6-14 0-24Z" />
       <path d="M24 0 C14 6 6 6 0 0 C6-6 14-6 24 0Z" />
@@ -24,7 +24,7 @@
   <text
     x="80"
     y="52"
-    fill="#ffffff"
+    fill="var(--mantine-color-white, #ffffff)"
     font-size="40"
     font-weight="600"
     font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
