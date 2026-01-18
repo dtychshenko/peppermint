@@ -31,7 +31,11 @@ export function TransactionsTable({ transactions }: Props) {
               />
             </Table.Td>
             <Table.Td>
-              <TextInput variant="unstyled" value={transaction.payee} />
+              <TextInput
+                variant="unstyled"
+                placeholder="Add a payee"
+                defaultValue={transaction.payee}
+              />
             </Table.Td>
             <Table.Td align="right">{toDisplayCurrency(transaction.amount)}</Table.Td>
           </Table.Tr>
