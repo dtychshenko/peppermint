@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import { RequestInfo } from "rwsdk/worker";
-import { TableSkeleton } from "./TableSkeleton";
-import { TransactionsTable } from "./TransactionsTable";
-import { ZeroState } from "./ZeroState";
+import { TableSkeleton } from "./parts/TableSkeleton";
+import { TransactionsTable } from "./parts/TransactionsTable";
+import { ZeroState } from "./parts/ZeroState";
 
 async function Transactions({ ctx }: Pick<RequestInfo, "ctx">) {
   // TODO: replace ctx with DB call

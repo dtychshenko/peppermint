@@ -5,18 +5,18 @@ import { Dropzone, FileRejection, FileWithPath } from "@mantine/dropzone";
 import { notifications } from "@mantine/notifications";
 import { IconCheck } from "@tabler/icons-react";
 import { useState } from "react";
-import { UPLOAD_ACCEPT, UPLOAD_SIZE_LIMIT_MB } from "../../config/import";
-import { processCsvUpload } from "../../functions/upload";
-import LeafyCry from "../../shared/leafy-cry.svg?react";
-import LeafyLaugh from "../../shared/leafy-laugh.svg?react";
-import Leafy from "../../shared/leafy.svg?react";
+import { UPLOAD_ACCEPT, UPLOAD_SIZE_LIMIT_MB } from "../../../config/import";
+import { processCsvUpload } from "../../../functions/upload";
+import LeafyCry from "../../../shared/leafy-cry.svg?react";
+import LeafyLaugh from "../../../shared/leafy-laugh.svg?react";
+import Leafy from "../../../shared/leafy.svg?react";
+import styles from "../transactions.module.css";
 import { TableSkeleton } from "./TableSkeleton";
-import styles from "./transactions.module.css";
 
 export function ZeroState() {
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleAcceptedFile = async (files: FileWithPath[]) => {
+  const handleAcceptedFile = async (files: Array<FileWithPath>) => {
     // TODO: logging + analytics + rum
     console.log("File drop: accepted", files);
     setIsProcessing(true);
@@ -46,7 +46,7 @@ export function ZeroState() {
     });
   };
 
-  const handleRejectedFile = (files: FileRejection[]) => {
+  const handleRejectedFile = (files: Array<FileRejection>) => {
     // TODO: logging + analytics + rum
     console.log("File drop: rejected", files);
     notifications.show({

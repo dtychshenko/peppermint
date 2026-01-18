@@ -6,12 +6,12 @@ import { AppLayout } from "./app/layouts/AppLayout";
 import { Transaction } from "./app/models/transaction";
 import GlobalError from "./app/pages/Error/GlobalError";
 import NotFound from "./app/pages/Error/NotFound";
-import Import from "./app/pages/Import";
-import Transactions from "./app/pages/Transactions";
+import Import from "./app/pages/Import/Import.page";
+import Transactions from "./app/pages/Transactions/Transactions.page";
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- todo: describe ctx type
 export type AppContext = {
-  transactions?: Transaction[];
+  transactions?: Array<Transaction>;
 };
 
 export default defineApp([

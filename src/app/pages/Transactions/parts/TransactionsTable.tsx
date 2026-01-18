@@ -1,11 +1,11 @@
 "use client";
 
 import { Table } from "@mantine/core";
-import { MAIN_HEADER_HEIGHT } from "../../config/layout";
-import { Transaction } from "../../models/transaction";
+import { MAIN_HEADER_HEIGHT } from "../../../config/layout";
+import { Transaction } from "../../../models/transaction";
 
 interface Props {
-  transactions: Transaction[];
+  transactions: Array<Transaction>;
 }
 
 export function TransactionsTable({ transactions }: Props) {

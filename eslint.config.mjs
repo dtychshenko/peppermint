@@ -1,7 +1,7 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import prettierConfig from "eslint-plugin-prettier/recommended";
-import tseslint from "typescript-eslint";
 import eslint from "@eslint/js";
+import prettierConfig from "eslint-plugin-prettier/recommended";
+import { defineConfig, globalIgnores } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 export default defineConfig([
   eslint.configs.recommended,
@@ -11,7 +11,7 @@ export default defineConfig([
   globalIgnores([".wrangler/**", ".next/**", "out/**", "build/**", "docs/.docusaurus/**"]),
   {
     rules: {
-      // Custom rules go here
+      "@typescript-eslint/array-type": ["error", { default: "generic" }],
     },
   },
 ]);

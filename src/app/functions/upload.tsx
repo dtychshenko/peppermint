@@ -18,9 +18,9 @@ interface InputFileSchema {
   ["USD$"]: string;
 }
 
-async function extractCsvData(file: File): Promise<Transaction[]> {
-  const { promise, resolve, reject } = Promise.withResolvers<Transaction[]>();
-  const rows: Transaction[] = [];
+async function extractCsvData(file: File): Promise<Array<Transaction>> {
+  const { promise, resolve, reject } = Promise.withResolvers<Array<Transaction>>();
+  const rows: Array<Transaction> = [];
 
   const onRow = (row: ParseStepResult<InputFileSchema>) => {
     rows.push({
@@ -58,7 +58,7 @@ async function extractCsvData(file: File): Promise<Transaction[]> {
   return promise;
 }
 
-export async function processCsvUpload(file: File): Promise<Transaction[]> {
+export async function processCsvUpload(file: File): Promise<Array<Transaction>> {
   console.log(`Starting csv processing on server`);
   const transactions = await extractCsvData(file);
 
