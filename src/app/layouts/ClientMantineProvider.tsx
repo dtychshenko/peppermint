@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 
 const theme = createTheme({
   primaryColor: "peppermint",
-  white: "#fcfcfc",
+  white: "#f6fbf8",
   black: "#222222",
   autoContrast: true,
   fontFamily: 'Inter, "Noto Sans", Arial, Helvetica, sans-serif',

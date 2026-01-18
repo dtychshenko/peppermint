@@ -1,44 +1,54 @@
 "use client";
 
-import { Anchor, Group, Skeleton } from "@mantine/core";
-import { Dropzone, FileRejection } from "@mantine/dropzone";
+import { Anchor } from "@mantine/core";
+import { Dropzone, FileRejection, FileWithPath } from "@mantine/dropzone";
 import { notifications } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons-react";
 import { useState } from "react";
 import { UPLOAD_ACCEPT, UPLOAD_SIZE_LIMIT_MB } from "../../config/import";
+import { processCsvUpload } from "../../functions/upload";
 import LeafyCry from "../../shared/leafy-cry.svg?react";
 import LeafyLaugh from "../../shared/leafy-laugh.svg?react";
 import Leafy from "../../shared/leafy.svg?react";
+import { TableSkeleton } from "./TableSkeleton";
 import styles from "./transactions.module.css";
 
-const tableSkeletonColumns = 5;
-const tableSkeletonRows = 10;
-const TableSkeleton = (
-  <>
-    <Group>
-      {Array.from({ length: tableSkeletonColumns }).map((_, index) => (
-        <Skeleton
-          key={index}
-          height={40}
-          mt={10}
-          width={`calc(${100 / tableSkeletonColumns}% - (var(--mantine-spacing-md) * 0.8))`}
-          radius="sm"
-        />
-      ))}
-    </Group>
-    {Array.from({ length: tableSkeletonRows }).map((_, index) => (
-      <Skeleton key={index} height={20} mt={10} radius="sm" />
-    ))}
-    <Skeleton height={20} mt={10} width="80%" radius="sm" />
-    <Skeleton height={20} mt={10} width="60%" radius="sm" />
-  </>
-);
-
-export default function ZeroState() {
+export function ZeroState() {
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleAcceptedFile = async (files: FileWithPath[]) => {
+    // TODO: logging + analytics + rum
+    console.log("File drop: accepted", files);
+    setIsProcessing(true);
+
+    console.log("File drop: starting processing", files);
+    const notificationId = notifications.show({
+      loading: true,
+      title: "Loading",
+      message: "Processing your file, please wait...",
+      autoClose: false,
+      withCloseButton: false,
+    });
+
+    // Send first file because we're only accepting a single upload at a time
+    const response = await processCsvUpload(files[0]);
+
+    console.log("File drop: processing finished", response);
+    notifications.update({
+      id: notificationId,
+      color: "green",
+      title: "Done!",
+      message: "Your file has been processed successfully",
+      icon: <IconCheck size={18} />,
+      loading: false,
+      withCloseButton: true,
+      autoClose: 5000,
+    });
+  };
 
   const handleRejectedFile = (files: FileRejection[]) => {
     // TODO: logging + analytics + rum
-    console.log("rejected files", files);
+    console.log("File drop: rejected", files);
     notifications.show({
       title: "Oops!",
       message: `Only CSV files less than ${UPLOAD_SIZE_LIMIT_MB}MB are currently supported.`,
@@ -46,28 +56,19 @@ export default function ZeroState() {
     });
   };
 
-  const handleAcceptedFile = (files: File[]) => {
-    // TODO: logging + analytics + rum
-    console.log("accepted files", files);
-    notifications.show({
-      title: "Yay!",
-      message: "File accepted",
-      color: "green",
-    });
-    setIsProcessing(true);
-  };
-
   if (isProcessing) {
-    return TableSkeleton;
+    return <TableSkeleton />;
   }
 
   return (
     <div className={styles.emptyContainer}>
       <Dropzone
-        onDrop={handleAcceptedFile}
-        onReject={handleRejectedFile}
+        accept={UPLOAD_ACCEPT}
+        multiple={false}
+        maxFiles={1}
         maxSize={UPLOAD_SIZE_LIMIT_MB * 1024 ** 2}
-        accept={UPLOAD_ACCEPT}>
+        onDrop={handleAcceptedFile}
+        onReject={handleRejectedFile}>
         <Dropzone.Idle>
           <Leafy />
         </Dropzone.Idle>

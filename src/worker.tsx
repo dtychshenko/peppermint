@@ -3,13 +3,16 @@ import { defineApp } from "rwsdk/worker";
 import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
+import { Transaction } from "./app/models/transaction";
 import GlobalError from "./app/pages/Error/GlobalError";
 import NotFound from "./app/pages/Error/NotFound";
 import Import from "./app/pages/Import";
 import Transactions from "./app/pages/Transactions";
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-empty-object-type -- todo: describe ctx type
-export type AppContext = {};
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- todo: describe ctx type
+export type AppContext = {
+  transactions?: Transaction[];
+};
 
 export default defineApp([
   except((error: unknown) => {
