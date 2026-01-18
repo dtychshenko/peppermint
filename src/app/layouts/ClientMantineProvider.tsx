@@ -2,6 +2,8 @@
 
 import { MantineProvider, createTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "@mantine/dropzone/styles.css";
+import "@mantine/notifications/styles.css";
 import type { ReactNode } from "react";
 
 const theme = createTheme({

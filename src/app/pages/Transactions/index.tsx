@@ -2,7 +2,7 @@ import ZeroState from "./ZeroState";
 
 export default function Transactions() {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       <ZeroState />
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { AppShell, Container } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Notifications } from "@mantine/notifications";
 import { PropsWithChildren } from "react";
 import { Footer } from "./footer/Footer";
 import { Header } from "./header/Header";
@@ -28,6 +29,7 @@ export function AppLayoutClient({ path, children }: PropsWithChildren<Props>) {
       </AppShell.Header>
 
       <MobileMenu path={path} opened={opened} onClose={close} />
+      <Notifications />
 
       <AppShell.Main>
         <Container>{children}</Container>

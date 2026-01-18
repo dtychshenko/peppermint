@@ -4,7 +4,7 @@
   viewBox="0 0 240 320"
   xmlns="http://www.w3.org/2000/svg"
   role="img"
-  aria-label="Peppermint leaf mascot crying"
+  aria-label="Peppermint leaf mascot laughing"
   id="leafy"
 >
 
@@ -42,15 +42,9 @@
   />
 
   <!-- Face -->
-  <path d="M85 75 Q95 65 100 70" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="leftEye" class="leafy-eye" />
-  <path d="M140 70 Q145 65 155 75" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round" id="rightEye" class="leafy-eye" />
-  <path d="M95 95 Q120 80 145 95" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
-
-  <!-- Tears -->
-  <circle cx="92" cy="85" r="2.5" fill="#4A90E2" opacity="0.7" />
-  <path d="M92 87 Q91 95 92 105" stroke="#4A90E2" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7" />
-  <circle cx="148" cy="85" r="2.5" fill="#4A90E2" opacity="0.7" />
-  <path d="M148 87 Q149 95 148 105" stroke="#4A90E2" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7" />
+  <path d="M88 72 Q95 62 102 72" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
+  <path d="M138 72 Q145 62 152 72" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linecap="round" />
+  <path d="M95 95 Q120 125 145 95 Z" fill="#1A1A1A" stroke="none" />
 
   <!-- Left arm -->
   <path

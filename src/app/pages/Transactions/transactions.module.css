@@ -1,3 +1,7 @@
+.emptyContainer {
+  text-align: center;
+}
+
 :global(#leafy #rightArm) {
   transform-box: fill-box;
   transform-origin: 50% 0%;
