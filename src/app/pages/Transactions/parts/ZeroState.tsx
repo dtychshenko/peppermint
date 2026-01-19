@@ -31,14 +31,14 @@ export function ZeroState() {
     });
 
     // Send first file because we're only accepting a single upload at a time
-    const response = await processCsvUpload(files[0]);
+    const added = await processCsvUpload(files[0]);
 
-    console.log("File drop: processing finished", response);
+    console.log("File drop: processing finished", added);
     notifications.update({
       id: notificationId,
       color: "green",
       title: "Done!",
-      message: "Your file has been processed successfully",
+      message: `Added ${added} new transactions`,
       icon: <IconCheck size={18} />,
       loading: false,
       withCloseButton: true,

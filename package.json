@@ -13,7 +13,9 @@
     "dev": "vite dev",
     "dev:init": "rw-scripts dev-init",
     "preview": "vite preview",
+    "lint": "eslint --fix",
     "worker:run": "rw-scripts worker-run",
+    "db:clean": "rm -rf .wrangler/state/v3/do/peppermint-Database",
     "clean": "rm -rf ./node_modules/.vite ./dist",
     "release": "rw-scripts ensure-deploy-env && npm run clean && npm run build && wrangler deploy",
     "release:staging": "CLOUDFLARE_ENV=staging yarn run release",
@@ -22,7 +24,8 @@
     "types": "tsc",
     "docs:dev": "yarn --cwd docs start",
     "docs:release": "yarn --cwd docs deploy",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write"
   },
   "dependencies": {
     "@mantine/charts": "^8.3.12",

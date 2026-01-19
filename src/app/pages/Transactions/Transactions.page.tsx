@@ -1,22 +1,23 @@
 import { Suspense } from "react";
-import { RequestInfo } from "rwsdk/worker";
+import { db } from "../../db";
 import { TableSkeleton } from "./parts/TableSkeleton";
 import { TransactionsTable } from "./parts/TransactionsTable";
 import { ZeroState } from "./parts/ZeroState";
 
-async function Transactions({ ctx }: Pick<RequestInfo, "ctx">) {
-  // TODO: replace ctx with DB call
-  if (!ctx?.transactions?.length) {
+async function Transactions() {
+  const transactions = await db.selectFrom("transactions").selectAll().execute();
+
+  if (!transactions?.length) {
     return <ZeroState />;
   }
 
-  return <TransactionsTable transactions={ctx.transactions} />;
+  return <TransactionsTable transactions={transactions} />;
 }
 
-export default async function TransactionsPage(request: RequestInfo) {
+export default async function TransactionsPage() {
   return (
     <Suspense fallback={<TableSkeleton />}>
-      <Transactions ctx={request.ctx} />
+      <Transactions />
     </Suspense>
   );
 }

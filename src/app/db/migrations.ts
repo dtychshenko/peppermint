@@ -19,6 +19,7 @@ export const migrations = {
           .addColumn("updatedDateTime", "integer", (col) => col.notNull())
           .addColumn("metadata", "blob")
           .addForeignKeyConstraint("categories", ["categoryId"], "categories", ["id"])
+          .addUniqueConstraint("transactions_date_payee_amount_unique", ["date", "payee", "amount"])
           .execute(),
 
         await db.schema

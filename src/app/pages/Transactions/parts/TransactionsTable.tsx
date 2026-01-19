@@ -3,11 +3,11 @@
 import { Table, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { MAIN_HEADER_HEIGHT } from "../../../config/layout";
-import { Transaction } from "../../../models/transaction";
+import { TransactionDAO } from "../../../db";
 import { toDisplayCurrency } from "../../../shared/numbers";
 
 interface Props {
-  transactions: Array<Transaction>;
+  transactions: Array<TransactionDAO>;
 }
 
 export function TransactionsTable({ transactions }: Props) {
@@ -25,7 +25,7 @@ export function TransactionsTable({ transactions }: Props) {
           <Table.Tr key={transaction.id}>
             <Table.Td w={110}>
               <DatePickerInput
-                value={transaction.date}
+                value={new Date(transaction.date)}
                 variant="unstyled"
                 valueFormat="ddd, MMM D"
               />

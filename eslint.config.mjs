@@ -8,7 +8,19 @@ export default defineConfig([
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   prettierConfig,
-  globalIgnores([".wrangler/**", ".next/**", "out/**", "build/**", "docs/.docusaurus/**"]),
+  globalIgnores([
+    ".github",
+    ".wrangler/",
+    ".vscode",
+    "dist",
+    "node_modules",
+    "out",
+    "build",
+    "docs/.docusaurus",
+    "docs/build",
+    "docs/node_modules",
+    "postcss.config.cjs",
+  ]),
   {
     rules: {
       "@typescript-eslint/array-type": ["error", { default: "generic" }],

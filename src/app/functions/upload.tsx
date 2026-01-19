@@ -3,8 +3,8 @@
 import { randomUUID } from "node:crypto";
 import { Readable } from "node:stream";
 import Papa, { type ParseStepResult } from "papaparse";
-import { getRequestInfo } from "rwsdk/worker";
-import { Transaction } from "../models/transaction";
+import { db, TransactionDAO } from "../db";
+import { partition } from "../utils/collections";
 
 // Warn: require fixed input file schema for POC purposes
 interface InputFileSchema {
@@ -18,21 +18,27 @@ interface InputFileSchema {
   ["USD$"]: string;
 }
 
-async function extractCsvData(file: File): Promise<Array<Transaction>> {
-  const { promise, resolve, reject } = Promise.withResolvers<Array<Transaction>>();
-  const rows: Array<Transaction> = [];
+// This can happen if
+const UNIQUE_TRANSACTION_ERROR =
+  "UNIQUE constraint failed: transactions.date, transactions.payee, transactions.amount: SQLITE_CONSTRAINT";
+
+async function extractCsvData(file: File): Promise<Array<TransactionDAO>> {
+  const { promise, resolve, reject } = Promise.withResolvers<Array<TransactionDAO>>();
+  const rows: Array<TransactionDAO> = [];
 
   const onRow = (row: ParseStepResult<InputFileSchema>) => {
     rows.push({
       id: randomUUID(),
-      date: new Date(row.data["Transaction Date"]).toISOString(),
+      date: new Date(row.data["Transaction Date"]).getTime(),
       payee: row.data["Description 1"],
       amount: Number(row.data["CAD$"]),
-      categoryId: "0",
+      categoryId: null,
       source: "csv",
       status: "unreviewed",
-      createdDateTime: new Date().toISOString(),
-      updatedDateTime: new Date().toISOString(),
+      createdDateTime: new Date().getTime(),
+      updatedDateTime: new Date().getTime(),
+      notes: null,
+      metadata: null,
     });
   };
 
@@ -58,13 +64,25 @@ async function extractCsvData(file: File): Promise<Array<Transaction>> {
   return promise;
 }
 
-export async function processCsvUpload(file: File): Promise<Array<Transaction>> {
+export async function processCsvUpload(file: File): Promise<number> {
   console.log(`Starting csv processing on server`);
   const transactions = await extractCsvData(file);
 
-  // TODO: Replace with save to DB
-  const { ctx } = getRequestInfo();
-  ctx.transactions = transactions;
+  console.time("Transactions DB insert");
+  const results = await Promise.allSettled(
+    transactions.map((transaction) => db.insertInto("transactions").values(transaction).execute()),
+  );
+  console.timeEnd("Transactions DB insert");
 
-  return transactions;
+  const [successful, failed] = partition(results, (result) => result.status === "fulfilled");
+  const [duplicates, others] = partition(
+    failed as Array<PromiseRejectedResult>,
+    (result) => result.reason.message === UNIQUE_TRANSACTION_ERROR,
+  );
+
+  console.log("Successful writes", successful.length);
+  console.log("Skipped duplicates", duplicates.length);
+  console.log("Failed writes", others);
+
+  return successful.length;
 }
