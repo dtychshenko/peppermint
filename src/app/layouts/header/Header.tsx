@@ -2,6 +2,7 @@
 
 import { MOBILE_BREAKPOINT } from "@/app/config/layout";
 import { Box, Burger, type BurgerProps, Group } from "@mantine/core";
+import { LanguageMenu } from "./parts/LanguageMenu";
 import { Logo } from "./parts/Logo";
 import { NavigationTabs } from "./parts/NavigationTabs";
 import { Spacer } from "./parts/Spacer";
@@ -20,7 +21,10 @@ export function Header({ path, opened, toggle }: Props) {
       <NavigationTabs path={path} />
       <Spacer />
       <Box visibleFrom={MOBILE_BREAKPOINT}>
-        <ThemeSwitch />
+        <Group gap="xs">
+          <LanguageMenu />
+          <ThemeSwitch />
+        </Group>
       </Box>
       <Burger
         color="peppermint.7"
