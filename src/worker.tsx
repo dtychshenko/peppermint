@@ -4,6 +4,7 @@ import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
 import { Transaction } from "./app/models/transaction";
+import Analyze from "./app/pages/Analyze/Analyze.page";
 import GlobalError from "./app/pages/Error/GlobalError";
 import NotFound from "./app/pages/Error/NotFound";
 import Import from "./app/pages/Import/Import.page";
@@ -32,6 +33,7 @@ export default defineApp([
     layout(AppLayout, [
       route("/", Transactions),
       route("/import", Import),
+      route("/analyze", Analyze),
       route("/error", GlobalError),
       route("/*", NotFound),
     ]),
