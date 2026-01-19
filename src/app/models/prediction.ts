@@ -7,8 +7,10 @@ import { TransactionId } from "./transaction";
 export interface Prediction {
   transactionId: TransactionId;
   categoryId: CategoryId;
-  confidence: number; // 0–1
-  model: string;
-  inferenceLatencyMs: number;
-  predictedDateTime: string;
+  confidence?: number; // 0–1
+  model: "user" | "rules" | "ai" | string;
+  inferenceLatencyMs?: number;
+  predictedDateTime?: Date;
+  createdDateTime: Date;
+  updatedDateTime: Date;
 }

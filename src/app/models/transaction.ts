@@ -11,13 +11,13 @@ export interface Transaction {
   id: TransactionId;
 
   /** Date when the transaction occurred in ISO-8601 format in UTC */
-  date: string;
+  date: Date;
 
   /** Positive for income, negative for expense */
   amount: number;
 
   /** Category assigned by the user or AI */
-  categoryId: CategoryId;
+  categoryId?: CategoryId;
 
   /** Name of the payee, if available */
   payee: string;
@@ -32,10 +32,10 @@ export interface Transaction {
   notes?: string;
 
   /** Date when the transaction was created in ISO-8601 extended format in UTC */
-  createdDateTime: string;
+  createdDateTime: Date;
 
   /** Date when the transaction was last updated in ISO-8601 extended format in UTC */
-  updatedDateTime: string;
+  updatedDateTime: Date;
 
   /** Optional original metadata, ex from Plaid */
   metadata?: Record<string, unknown>;

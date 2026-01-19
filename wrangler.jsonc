@@ -3,14 +3,26 @@
   "name": "peppermint",
   "main": "src/worker.tsx",
   "compatibility_date": "2025-08-21",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
-  "vars": {}
+  "vars": {},
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "DATABASE",
+        "class_name": "Database",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["Database"],
+    },
+  ],
 }

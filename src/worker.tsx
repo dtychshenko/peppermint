@@ -9,6 +9,9 @@ import NotFound from "./app/pages/Error/NotFound";
 import Import from "./app/pages/Import/Import.page";
 import Transactions from "./app/pages/Transactions/Transactions.page";
 
+// Expose Durable Object with migrations for Cloudflare
+export { Database } from "./app/db/durableObject";
+
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- todo: describe ctx type
 export type AppContext = {
   transactions?: Array<Transaction>;
