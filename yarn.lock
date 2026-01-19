@@ -5642,6 +5642,11 @@ react-transition-group@4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-virtuoso@^4.18.1:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/react-virtuoso/-/react-virtuoso-4.18.1.tgz#3eb7078f2739a31b96c723374019e587deeb6ebc"
+  integrity sha512-KF474cDwaSb9+SJ380xruBB4P+yGWcVkcu26HtMqYNMTYlYbrNy8vqMkE+GpAApPPufJqgOLMoWMFG/3pJMXUA==
+
 react@^19.3.0-canary-4a3d993e-20260114:
   version "19.3.0-canary-4a3d993e-20260114"
   resolved "https://registry.yarnpkg.com/react/-/react-19.3.0-canary-4a3d993e-20260114.tgz#0a44228f88f74b0ad775e85f2f0878d355638d9a"

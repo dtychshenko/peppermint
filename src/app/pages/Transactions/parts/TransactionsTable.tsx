@@ -1,46 +1,55 @@
 "use client";
 
-import { Table, TextInput } from "@mantine/core";
-import { DatePickerInput } from "@mantine/dates";
+import { Table } from "@mantine/core";
+import { useMemo } from "react";
+import { type TableProps, TableVirtuoso } from "react-virtuoso";
 import { MAIN_HEADER_HEIGHT } from "../../../config/layout";
 import { TransactionDAO } from "../../../db";
-import { toDisplayCurrency } from "../../../shared/numbers";
+import { TransactionRow } from "./TransactionRow";
 
 interface Props {
   transactions: Array<TransactionDAO>;
 }
 
+const Headers = () => (
+  <Table.Tr>
+    <Table.Th>Date</Table.Th>
+    <Table.Th>Payee</Table.Th>
+    <Table.Th align="right">Amount</Table.Th>
+  </Table.Tr>
+);
+
 export function TransactionsTable({ transactions }: Props) {
+  const components = useMemo(
+    () => ({
+      Table: (props: TableProps) => (
+        <Table
+          {...props}
+          highlightOnHover
+          striped
+          stickyHeader
+          stickyHeaderOffset={MAIN_HEADER_HEIGHT}
+          style={{ ...props.style, borderCollapse: "separate" }}
+        />
+      ),
+      TableHead: Table.Thead,
+      TableRow: Table.Tr,
+      TableBody: Table.Tbody,
+    }),
+    [],
+  );
+
   return (
-    <Table highlightOnHover striped stickyHeader stickyHeaderOffset={MAIN_HEADER_HEIGHT}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Date</Table.Th>
-          <Table.Th>Payee</Table.Th>
-          <Table.Th align="right">Amount</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>
-        {transactions.map((transaction) => (
-          <Table.Tr key={transaction.id}>
-            <Table.Td w={110}>
-              <DatePickerInput
-                value={new Date(transaction.date)}
-                variant="unstyled"
-                valueFormat="ddd, MMM D"
-              />
-            </Table.Td>
-            <Table.Td>
-              <TextInput
-                variant="unstyled"
-                placeholder="Add a payee"
-                defaultValue={transaction.payee}
-              />
-            </Table.Td>
-            <Table.Td align="right">{toDisplayCurrency(transaction.amount)}</Table.Td>
-          </Table.Tr>
-        ))}
-      </Table.Tbody>
-    </Table>
+    <TableVirtuoso
+      data={transactions}
+      useWindowScroll
+      minOverscanItemCount={50}
+      defaultItemHeight={40}
+      fixedItemHeight={40}
+      components={components}
+      fixedHeaderContent={Headers}
+      computeItemKey={(_index, item) => item.id}
+      itemContent={(_index, transaction) => <TransactionRow transaction={transaction} />}
+    />
   );
 }
