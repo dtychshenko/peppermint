@@ -31,7 +31,8 @@ export default defineApp([
   },
   render(Document, [
     layout(AppLayout, [
-      route("/", Transactions),
+      route("/", ({ request }) => Response.redirect(new URL("/transactions", request.url))),
+      route("/transactions", Transactions),
       route("/import", Import),
       route("/analyze", Analyze),
       route("/error", GlobalError),
