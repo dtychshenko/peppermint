@@ -1,3 +1,4 @@
+import { MOBILE_BREAKPOINT } from "@/app/config/layout";
 import { Group, Tabs, Text } from "@mantine/core";
 import { navigate } from "rwsdk/client";
 import { navigation } from "../../../config/navigation";
@@ -12,7 +13,7 @@ export function NavigationTabs({ path }: Props) {
   };
 
   return (
-    <Tabs h="100%" value={path} onChange={handleSelectedTab} visibleFrom="xs">
+    <Tabs h="100%" value={path} onChange={handleSelectedTab} visibleFrom={MOBILE_BREAKPOINT}>
       <Group gap={0} wrap="nowrap" h="100%">
         {navigation.config.map(({ href, label, icon: Icon }, i) => (
           <Tabs.Tab
