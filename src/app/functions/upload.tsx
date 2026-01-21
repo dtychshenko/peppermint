@@ -5,6 +5,7 @@ import { Readable } from "node:stream";
 import Papa, { type ParseStepResult } from "papaparse";
 import { db, TransactionDAO } from "../db";
 import { partition } from "../utils/collections";
+import { categorize } from "./categorization";
 
 // Warn: require fixed input file schema for POC purposes
 interface InputFileSchema {
@@ -32,7 +33,6 @@ async function extractCsvData(file: File): Promise<Array<TransactionDAO>> {
       date: new Date(row.data["Transaction Date"]).getTime(),
       payee: row.data["Description 1"],
       amount: Number(row.data["CAD$"]),
-      categoryId: null,
       source: "csv",
       status: "unreviewed",
       createdDateTime: new Date().getTime(),
@@ -76,7 +76,9 @@ export async function processCsvUpload(file: File): Promise<number> {
 
   console.time("Transactions DB insert");
   const results = await Promise.allSettled(
-    transactions.map((transaction) => db.insertInto("transactions").values(transaction).execute()),
+    transactions.map((transaction) =>
+      db.insertInto("transactions").values(transaction).returning("id").executeTakeFirstOrThrow(),
+    ),
   );
   console.timeEnd("Transactions DB insert");
 
@@ -89,6 +91,14 @@ export async function processCsvUpload(file: File): Promise<number> {
   console.log("Successful writes", successful.length);
   console.log("Skipped duplicates", duplicates.length);
   console.log("Failed writes", others);
+
+  console.time("Categorization");
+  const successfulIds = successful.map(
+    (result) => (result as PromiseFulfilledResult<Pick<TransactionDAO, "id">>).value.id,
+  );
+  const successfulTx = transactions.filter((tx) => successfulIds.includes(tx.id));
+  await Promise.allSettled(successfulTx.map((tx) => categorize(tx)));
+  console.timeEnd("Categorization");
 
   return successful.length;
 }

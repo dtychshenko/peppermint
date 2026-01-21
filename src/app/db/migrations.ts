@@ -1,5 +1,5 @@
-import crypto from "node:crypto";
 import { type Migrations } from "rwsdk/db";
+import { seeds } from "./seeds";
 
 export const migrations = {
   "001_initial_schema": {
@@ -10,7 +10,6 @@ export const migrations = {
           .addColumn("id", "text", (col) => col.primaryKey())
           .addColumn("date", "integer", (col) => col.notNull())
           .addColumn("amount", "real", (col) => col.notNull())
-          .addColumn("categoryId", "text")
           .addColumn("payee", "text", (col) => col.notNull())
           .addColumn("source", "text", (col) => col.notNull())
           .addColumn("status", "text", (col) => col.notNull())
@@ -18,7 +17,6 @@ export const migrations = {
           .addColumn("createdDateTime", "integer", (col) => col.notNull())
           .addColumn("updatedDateTime", "integer", (col) => col.notNull())
           .addColumn("metadata", "blob")
-          .addForeignKeyConstraint("categories", ["categoryId"], "categories", ["id"])
           .addUniqueConstraint("transactions_date_payee_amount_unique", ["date", "payee", "amount"])
           .execute(),
 
@@ -34,30 +32,21 @@ export const migrations = {
         await db.schema
           .createTable("predictions")
           .addColumn("id", "text", (col) => col.primaryKey())
-          .addColumn("transactionId", "text", (col) => col.notNull())
-          .addColumn("categoryId", "text", (col) => col.notNull())
+          .addColumn("transactionId", "text", (col) =>
+            col.notNull().references("transactions.id").onDelete("cascade"),
+          )
+          .addColumn("categoryId", "text", (col) =>
+            col.notNull().references("categories.id").onDelete("cascade"),
+          )
           .addColumn("confidence", "real")
           .addColumn("model", "text", (col) => col.notNull())
           .addColumn("inferenceLatencyMs", "integer")
           .addColumn("predictedDateTime", "integer")
           .addColumn("createdDateTime", "integer", (col) => col.notNull())
           .addColumn("updatedDateTime", "integer", (col) => col.notNull())
-          .addForeignKeyConstraint("transactions", ["transactionId"], "transactions", ["id"])
-          .addForeignKeyConstraint("categories", ["categoryId"], "categories", ["id"])
           .execute(),
 
-        db
-          .insertInto("categories")
-          .values([
-            {
-              id: crypto.randomUUID(),
-              name: "",
-              description: "",
-              createdDateTime: Date.now(),
-              updatedDateTime: Date.now(),
-            },
-          ])
-          .execute(),
+        db.insertInto("categories").values(seeds().categories).execute(),
       ];
     },
 

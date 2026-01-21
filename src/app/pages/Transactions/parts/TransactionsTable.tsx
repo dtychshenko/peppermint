@@ -1,18 +1,20 @@
 "use client";
 
+import { CategorizedTransaction } from "@/app/models/transaction";
 import { Checkbox, Table, Transition } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconCheck } from "@tabler/icons-react";
 import { useCallback, useState } from "react";
 import { type TableProps, TableVirtuoso } from "react-virtuoso";
 import { MAIN_HEADER_HEIGHT } from "../../../config/layout";
-import { TransactionDAO } from "../../../db";
+import { CategoryDAO } from "../../../db";
 import { deleteTransactions } from "../../../functions/transactions";
 import { TransactionRow } from "./TransactionRow";
 import { TransactionsMenu } from "./TransactionsMenu";
 
 interface Props {
-  transactions: Array<TransactionDAO>;
+  transactions: Array<CategorizedTransaction>;
+  categories: Array<CategoryDAO>;
 }
 
 const components = {
@@ -31,7 +33,7 @@ const components = {
   TableBody: Table.Tbody,
 };
 
-export function TransactionsTable({ transactions }: Props) {
+export function TransactionsTable({ transactions, categories }: Props) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const onSelect = useCallback((transactionId: string) => {
@@ -60,7 +62,7 @@ export function TransactionsTable({ transactions }: Props) {
           />
         </Table.Th>
         <Table.Th>Date</Table.Th>
-        <Table.Th>Payee</Table.Th>
+        <Table.Th>Merchant</Table.Th>
         <Table.Th>Category</Table.Th>
         <Table.Th style={{ textAlign: "right" }}>Amount</Table.Th>
       </Table.Tr>
@@ -113,6 +115,7 @@ export function TransactionsTable({ transactions }: Props) {
         itemContent={(_index, transaction) => (
           <TransactionRow
             transaction={transaction}
+            categories={categories}
             selected={selected.has(transaction.id)}
             onSelect={onSelect}
           />

@@ -4,7 +4,6 @@ import { TransactionsApi } from "./app/api/transactions";
 import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
-import { Transaction } from "./app/models/transaction";
 import Analyze from "./app/pages/Analyze/Analyze.page";
 import GlobalError from "./app/pages/Error/GlobalError";
 import NotFound from "./app/pages/Error/NotFound";
@@ -14,10 +13,8 @@ import Transactions from "./app/pages/Transactions/Transactions.page";
 // Expose Durable Object with migrations for Cloudflare
 export { Database } from "./app/db/durableObject";
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- todo: describe ctx type
-export type AppContext = {
-  transactions?: Array<Transaction>;
-};
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-empty-object-type -- todo: describe ctx type
+export type AppContext = {};
 
 export default defineApp([
   except((error: unknown) => {
