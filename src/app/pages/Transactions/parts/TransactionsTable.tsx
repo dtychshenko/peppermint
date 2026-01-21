@@ -61,7 +61,8 @@ export function TransactionsTable({ transactions }: Props) {
         </Table.Th>
         <Table.Th>Date</Table.Th>
         <Table.Th>Payee</Table.Th>
-        <Table.Th align="right">Amount</Table.Th>
+        <Table.Th>Category</Table.Th>
+        <Table.Th style={{ textAlign: "right" }}>Amount</Table.Th>
       </Table.Tr>
     ),
     [selected.size, transactions.length],

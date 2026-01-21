@@ -1,4 +1,4 @@
-import { Checkbox, Table, TextInput } from "@mantine/core";
+import { Checkbox, Select, Table, TextInput } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { memo, useCallback, useMemo } from "react";
 import { TransactionDAO } from "../../../db";
@@ -9,6 +9,18 @@ interface Props {
   selected: boolean;
   onSelect: (transactionId: string) => void;
 }
+
+const categories = [
+  { value: "Uncategorized", label: "Uncategorized" },
+  { value: "Food", label: "Food" },
+  { value: "Shopping", label: "Shopping" },
+  { value: "Transportation", label: "Transportation" },
+  { value: "Utilities", label: "Utilities" },
+  { value: "Healthcare", label: "Healthcare" },
+  { value: "Entertainment", label: "Entertainment" },
+  { value: "Education", label: "Education" },
+  { value: "Travel", label: "Travel" },
+];
 
 export const TransactionRow = memo(function TransactionRow(props: Props) {
   const { transaction, selected, onSelect } = props;
@@ -28,7 +40,17 @@ export const TransactionRow = memo(function TransactionRow(props: Props) {
       <Table.Td>
         <TextInput variant="unstyled" placeholder="Add a payee" defaultValue={transaction.payee} />
       </Table.Td>
-      <Table.Td align="right">{amount}</Table.Td>
+      <Table.Td w={160}>
+        <Select
+          variant="unstyled"
+          data={categories}
+          color="peppermint"
+          defaultValue={transaction.categoryId ?? "Uncategorized"}
+        />
+      </Table.Td>
+      <Table.Td align="right" w={100}>
+        {amount}
+      </Table.Td>
     </>
   );
 });
