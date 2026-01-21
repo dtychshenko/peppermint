@@ -1,6 +1,6 @@
 "use client";
 
-import { AppShell, Container } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Notifications } from "@mantine/notifications";
 import { PropsWithChildren } from "react";
@@ -32,9 +32,7 @@ export function AppLayoutClient({ path, children }: PropsWithChildren<Props>) {
       <MobileMenu path={path} opened={opened} onClose={close} />
       <Notifications />
 
-      <AppShell.Main>
-        <Container>{children}</Container>
-      </AppShell.Main>
+      <AppShell.Main>{children}</AppShell.Main>
 
       <AppShell.Footer withBorder={false}>
         <Footer />
