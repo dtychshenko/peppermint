@@ -1,5 +1,6 @@
 import { except, layout, render, route } from "rwsdk/router";
 import { defineApp } from "rwsdk/worker";
+import { TransactionsApi } from "./app/api/transactions";
 import Document from "./app/Document";
 import { setCommonHeaders } from "./app/headers";
 import { AppLayout } from "./app/layouts/AppLayout";
@@ -30,8 +31,10 @@ export default defineApp([
     ctx;
   },
   render(Document, [
+    route("/", ({ request }) => Response.redirect(new URL("/transactions", request.url))),
+    route("/api/transactions", TransactionsApi),
+
     layout(AppLayout, [
-      route("/", ({ request }) => Response.redirect(new URL("/transactions", request.url))),
       route("/transactions", Transactions),
       route("/import", Import),
       route("/analyze", Analyze),

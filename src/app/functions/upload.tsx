@@ -64,6 +64,12 @@ async function extractCsvData(file: File): Promise<Array<TransactionDAO>> {
   return promise;
 }
 
+/**
+ * Process CSV upload. Parses the file and inserts the transactions into the database.
+ *
+ * @param file CSV file to process
+ * @returns Number of transactions processed
+ */
 export async function processCsvUpload(file: File): Promise<number> {
   console.log(`Starting csv processing on server`);
   const transactions = await extractCsvData(file);
