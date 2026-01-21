@@ -2,7 +2,7 @@ import { IconCashRegister, IconChartHistogram, IconDatabaseImport } from "@table
 
 export const navigation = {
   config: [
-    { label: "Transactions", href: "/", icon: IconCashRegister },
+    { label: "Transactions", href: "/transactions", icon: IconCashRegister },
     { label: "Import", href: "/import", icon: IconDatabaseImport },
     { label: "Analyze", href: "/analyze", icon: IconChartHistogram },
   ],
