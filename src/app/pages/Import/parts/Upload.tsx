@@ -1,15 +1,21 @@
 "use client";
 
-import { Group, Text } from "@mantine/core";
+import { Box, Group, LoadingOverlay, Text } from "@mantine/core";
 import { Dropzone } from "@mantine/dropzone";
 import { IconUpload, IconX } from "@tabler/icons-react";
 import { Suspense } from "react";
 import { UPLOAD_SIZE_LIMIT_MB } from "../../../config/import";
 import { FileDrop } from "./FileDrop";
 
+const Loader = (
+  <Box w="100%" maw={480} bd="1px dashed var(--mantine-color-gray-4)" mih={150} pos="relative">
+    <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+  </Box>
+);
+
 export function Upload() {
   return (
-    <Suspense fallback={"Loading..."}>
+    <Suspense fallback={Loader}>
       <FileDrop>
         <Group justify="center" gap="sm" mih={150} style={{ pointerEvents: "none" }}>
           <Dropzone.Accept>
