@@ -25,3 +25,19 @@ export async function deleteTransactions(transactionIds: Array<string>): Promise
   console.log("Deleted transactions", deleted);
   return deleted;
 }
+
+/**
+ * Get transactions grouped and aggregated by category
+ *
+ * @returns Array of transactions grouped by category
+ */
+export async function getTransactionsByCategory() {
+  return db
+    .selectFrom("transactions as t")
+    .innerJoin("predictions as p", "p.transactionId", "t.id")
+    .innerJoin("categories as c", "c.id", "p.categoryId")
+    .select("c.name")
+    .select(({ fn }) => fn.sum("t.amount").as("value"))
+    .groupBy("c.name")
+    .execute();
+}

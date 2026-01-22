@@ -1,20 +1,27 @@
-"use client";
+import { Center, Container, Loader } from "@mantine/core";
+import { Suspense } from "react";
+import { getTransactionsByCategory } from "../../functions/transactions";
+import { ByCategory } from "./parts/charts/ByCategory";
+import { ZeroState } from "./parts/ZeroState";
 
-import { DonutChart } from "@mantine/charts";
-import { Text } from "@mantine/core";
+async function TransactionsByCategory() {
+  const data = await getTransactionsByCategory();
 
-const data = [
-  { name: "USA", value: 400, color: "indigo.6" },
-  { name: "India", value: 300, color: "yellow.6" },
-  { name: "Japan", value: 100, color: "teal.6" },
-  { name: "Other", value: 200, color: "gray.6" },
-];
+  if (!data?.length) {
+    return <ZeroState />;
+  }
 
-export default function Analyze() {
+  return <ByCategory data={data} />;
+}
+
+export default async function Analyze() {
   return (
-    <div>
-      <Text>Spending by category</Text>
-      <DonutChart data={data} />
-    </div>
+    <Container w="100%" fluid>
+      <Center>
+        <Suspense fallback={<Loader size="xl" />}>
+          <TransactionsByCategory />
+        </Suspense>
+      </Center>
+    </Container>
   );
 }
