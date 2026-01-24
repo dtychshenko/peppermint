@@ -1,4 +1,4 @@
-import { db, PredictionDAO, TransactionDAO } from "../db";
+import { CategoryDAO, db, PredictionDAO, TransactionDAO } from "../db";
 import { seeds } from "../db/seeds";
 
 type CategoryName = ReturnType<typeof seeds>["categories"][number]["name"];
@@ -55,8 +55,10 @@ function getStaticCategory(description: string): CategoryName | null {
   return null;
 }
 
-export async function categorize(transaction: TransactionDAO): Promise<void> {
-  const categories = await db.selectFrom("categories").selectAll().execute();
+export async function categorize(
+  categories: Array<CategoryDAO>,
+  transaction: TransactionDAO,
+): Promise<void> {
   const categoryMap = new Map(categories.map((category) => [category.name, category]));
   const categoryName = getStaticCategory(transaction.payee);
   const category = categoryMap.get(categoryName ?? "");

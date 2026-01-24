@@ -70,7 +70,7 @@ async function extractCsvData(file: File): Promise<Array<TransactionDAO>> {
  * @param file CSV file to process
  * @returns Number of transactions processed
  */
-export async function processCsvUpload(file: File): Promise<number> {
+export async function processCsvUpload(file: File): Promise<Array<TransactionDAO>> {
   console.log(`Starting csv processing on server`);
   const transactions = await extractCsvData(file);
 
@@ -97,8 +97,11 @@ export async function processCsvUpload(file: File): Promise<number> {
     (result) => (result as PromiseFulfilledResult<Pick<TransactionDAO, "id">>).value.id,
   );
   const successfulTx = transactions.filter((tx) => successfulIds.includes(tx.id));
-  await Promise.allSettled(successfulTx.map((tx) => categorize(tx)));
-  console.timeEnd("Categorization");
+  const categories = await db.selectFrom("categories").selectAll().execute();
+  await Promise.allSettled(successfulTx.map((tx) => categorize(categories, tx)));
 
-  return successful.length;
+  console.timeEnd("Categorization");
+  console.timeLog("Categorization", successfulTx.length);
+
+  return successfulTx;
 }
