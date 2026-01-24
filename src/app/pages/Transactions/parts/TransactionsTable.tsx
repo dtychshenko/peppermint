@@ -81,12 +81,12 @@ export function TransactionsTable({ transactions, categories }: Props) {
       withCloseButton: false,
     });
 
-    const deleted = await deleteTransactions(Array.from(selected));
+    await deleteTransactions(Array.from(selected));
     notifications.update({
       id: notificationId,
       color: "green",
       title: "Done!",
-      message: `Deleted ${deleted} transactions`,
+      message: `Deleted ${selected.size} transactions`,
       icon: <IconCheck size={18} />,
       loading: false,
       withCloseButton: true,
