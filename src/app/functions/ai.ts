@@ -18,7 +18,8 @@ Rules:
 - Do NOT invent categories
 - Do NOT change transaction IDs or category IDs
 - If confidence is below 0.5, skip the transaction and do not provide it in the output
-- Output valid JSON only without any additional text or comments
+- Output valid JSON only without any additional text, markdown formatting, or comments.
+- Do NOT use markdown code blocks or any other code block markers. Return strictly valid parsable JSON.
 
 Return a JSON array where each item includes:
 - transactionId
@@ -107,9 +108,24 @@ async function processBatch(categories: Array<CategoryDAO>, batch: Array<Transac
 
 function parseCategorizationResult(response: string): Array<CategorizationResult> {
   try {
-    return JSON.parse(response) as Array<CategorizationResult>;
+    // Sanitize response: remove markdown code blocks and whitespace
+    const cleaned = response
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    const parsed = JSON.parse(cleaned);
+
+    // Basic validation
+    if (!Array.isArray(parsed)) {
+      console.warn("AI response is not an array");
+      return [];
+    }
+
+    return parsed as Array<CategorizationResult>;
   } catch (e) {
     console.warn("Failed to parse response from AI", e);
+    console.warn("Raw response:", response);
     return [];
   }
 }
