@@ -82,15 +82,15 @@ A widget is added that shows monthly spending by category. Users can select a mo
         - Realtime updates for transaction processing feedback loop
         - Queues for background processing of large number of transactions and categorization
         - Cron triggers for periodic download of transactions from banks
+        - Workers AI for ML model inference
     - Cons: Vendor lock-in
-2. Use Chakra UI for quick prototyping of the front end
-    - Pros: Ready to use components, good documentation, accessibility support
-    - Cons: Customization can be limited but enough for the POC purposes, larger bundle size
+2. Use Mantine UI for quick prototyping of the front end
 
 # Intuit-specific Choices
 - Estimate traffic based on public Mint data
 - Create a new app, app plugin and plugin in Appfabric
-    - Using Dynex stack and the Player for front end
+    - Use Dynex stack and the Player for front end
+    - Use CGDS for Player plugins
 - Data import using Data-X
 - Security using Identity Platform / IUS
 - Experimentation using IXP
