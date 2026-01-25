@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # System Requirements
@@ -7,7 +7,6 @@ sidebar_position: 2
 ## Functional Requirements
 
 ### Transaction Ingestion
-#### MVP scope
 - Upload CSV files
 - Validate and normalize input
 - Idempotent ingestion (no duplicates on re-upload)
@@ -23,12 +22,12 @@ sidebar_position: 2
 ### Transaction Management
 - Users must view a scrollable list of all transactions.
 - Users must be able to manually edit the "Category" of any transaction.
-- **Real-Time Updates**: Changing a category must immediately update the spending report/charts without a page reload.
+- Changing a category must update the spending report/charts without a page reload.
 
 ### Smart Categorization (AI)
-- **Auto-Categorization**: System must attempt to categorize imported transactions automatically.
-- **Heuristic Engine**: Immediate categorization based on keywords (e.g., "Uber" -> "Transport").
-- **LLM Fallback**: Ability to mark complex/unknown transactions for "AI Analysis" (mocked latency).
+- System must attempt to categorize imported transactions automatically.
+- Immediate categorization based on keywords (e.g., "Uber" -> "Transport").
+- Ability to mark complex/unknown transactions for "AI Analysis" (mocked latency).
 
 ### Reporting & Analytics
 - **Spending Breakdown**: Visual pie/bar chart showing total spend per category.
@@ -46,7 +45,7 @@ sidebar_position: 2
 - Micro-animations, dark mode and accessibility considerations.
 - System must handle simulated "slow network" states without blocking the UI, displaying in-progress indicators as needed and allowing continued interaction.
 - Globalization support.
-- The UI is intentionally not mobile-first. Mobile responsiveness is strived for, but the mobile experience is better served by a dedicated native app.
+- UI is responsiveness to screen size changes, but the mobile experience is best served by a dedicated native app.
 
 ### Privacy & Security
 - Data is encrypyted at rest and in transit.
@@ -63,13 +62,13 @@ sidebar_position: 2
     - Categorization accuracy
     - Override frequency
 - Logs and traces across services
+- Feedback loop for AI-native categorization evaluation and training
 
 ### Cost
-- AI inference is selectively applied
-- Caching of predictions
+- AI inference is selectively applied.
 - Tiered service levels for heavy users
 
 ### Scalability
-- Horizontal scaling of categorization service
+- Horizontal scaling of microservices
 - Load balancing
 - Caching of predictions

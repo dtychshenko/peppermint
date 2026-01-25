@@ -1,14 +1,14 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Implementation Plan
 ## Stage 1: MVP
 ### File Upload
-Synchronous processing of user uploaded CSV file with transactions and categorization using static rules. File size is limited to cap the wait time for processing. No deduplication of transactions. Includes a virtualized list of transactions that loads a paginated list of up to 100 transactions to allow smooth scrolling of large number of transactions.
+Synchronous processing of user uploaded CSV file with transactions and categorization using static rules. File size is limited to cap the wait time for processing. Transactions are deduplicated based on exact combination of date, amount and description. Includes a virtualized list of transactions that loads a paginated list of up to 100 transactions to allow smooth scrolling of large number of transactions.
 
 1. User uploads a CSV file with transactions via an upload modal. A loading spinner is shown while processing end to end.
-2. Transaction micro-service reads the file and stores the transactions into the database.
+2. Import service reads the file and stores the transactions into the database.
 3. Loading modal is removed and front end displays the categorized transactions to the user.
 
 ### Categorization
@@ -26,6 +26,16 @@ User reviews transactions and can manually override categories. To confirm a tra
     - File upload and processing: < 30 seconds for files up to 5MB
     - Transaction review update: < 2 seconds
     - Retry attempts for failed requests: up to 3 times with exponential backoff
+
+### Prod Launch Requirements
+- [ ] Adequate unit test coverage (90%+)
+- [ ] E2E tests of the happy path flow and expected failure states
+- [ ] Logging, metrics and analytics for all critical paths
+- [ ] Dashboard and alerts for monitoring and debugging
+- [ ] Localization
+- [ ] Major features are behind feature flags
+- [ ] App and server configurations are validated in a staging environment
+- [ ] QA / PM signoff
 
 ## Stage 2: Async Processing
 - Transactions are now processed asynchronously. File size limit is increased. 
@@ -81,8 +91,8 @@ A widget is added that shows monthly spending by category. Users can select a mo
 - Estimate traffic based on public Mint data
 - Create a new app, app plugin and plugin in Appfabric
     - Using Dynex stack and the Player for front end
-- Security using Identity Platform aka IUS
+- Data import using Data-X
+- Security using Identity Platform / IUS
 - Experimentation using IXP
 - Observability with Splunk logs, dashboards and alerts
 - Data storage, IDPS for encryption
-    

@@ -6,18 +6,26 @@ sidebar_position: 0
 
 Peppermint is a Personal Finance Dashboard designed to help users manage their transaction history with AI-powered categorization and insightful reporting.
 
-## Key Features
+## Key Features of the Demo App
 
-- **Transaction Ingestion**: Upload CSVs or connect to a bank.
-- **AI Categorization**: Automated categorization with manual overrides.
-- **Report Generation**: Monthly spending analysis by category.
-- **Scalability & Security**: Designed for high volumes of sensitive data.
-- **Graceful Degradation**: Robust handling of failures.
+- Imports CSVs and stores the transactions.
+- Multi-layered and AI-powered categorization of transactions.
+- Real-time non-blocking UI updates.
+- Responsive UI with dark / light themes and list virtualization.
+- Spending analysis by category.
 
-## Project Goals
+## Out of Scope for this Demo
 
-The main objective is to provide a seamless and "spicy" experience for users to track their finances, starting with a coded Proof of Concept and expanding into a full-scale application.
+- Authentication and authorization
+- Real bank integrations
+- Multi-account support
+- Multi-currency handling
+- i18n and l10n
 
 ## Environments
 - **Staging**: https://peppermint-staging.peppermint-app.workers.dev/
 - **Production**: https://peppermint.peppermint-app.workers.dev/
+
+## Sample CSV Data
+Use this sample CSV file to add transactions to your account.
+- [data-sample.csv](/samples/data-sample.csv)
