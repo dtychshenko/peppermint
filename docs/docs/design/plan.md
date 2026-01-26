@@ -68,8 +68,8 @@ A widget is added that shows monthly spending by category. Users can select a mo
 
 ## Prioritized Future Work
 1. Users can connect their bank accounts to automatically import transactions. Plaid integration is used for this feature. Processing is done asynchronously and follows the same path as Stage 2. Peppermint does not store user credentials, only the access tokens provided by Plaid.
-2. Migrate to an event-driven categorization approach to eliminate manual transaction review and enable continuous model improvement. The event-based model emits categorization events and stores the transaction category separately by type (i.e. rules-based, AI-based or manual entry) to improve AI model learning, evolution, audit and explainability.
-3. Improve categorization is using a pre-trained ML model. When user reviews the transactions, the category and the transaction data is sent back to the model for fine-tuning.
+2. Developer API for accessing transaction data and third party app integrations.
+3. Categorization is improved using a pre-trained ML model. When user reviews the transactions, the category and the transaction data is sent back to the model for fine-tuning.
 4. Add a reporting service that can generate data reports on the server side instead of aggregating on the front end. Reports can be scheduled and emailed to users periodically.
 5. Support for multiple accounts per user.
 6. Support for multi-currency transactions.
