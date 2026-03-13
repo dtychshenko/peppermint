@@ -1,4 +1,4 @@
-name: Deploy to External User Repo
+name: Deploy docs
 
 on:
   push:
