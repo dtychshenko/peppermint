@@ -1,4 +1,4 @@
-name: Deploy Docs
+name: Deploy to External User Repo
 
 on:
   push:
@@ -17,8 +17,10 @@ jobs:
         with:
           node-version: 20
           cache: "yarn"
+          cache-dependency-path: docs/yarn.lock
 
       - name: Install and Build
+        working-directory: ./docs
         run: |
           yarn install --frozen-lockfile
           yarn build
@@ -29,6 +31,6 @@ jobs:
           personal_token: ${{ secrets.GH_PAGES_TOKEN }}
           external_repository: dtychshenko/dtychshenko.github.io
           publish_branch: gh-pages
-          publish_dir: ./build
+          publish_dir: ./docs/build
           destination_dir: peppermint
           keep_files: false
