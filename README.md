@@ -1,6 +1,6 @@
 # Peppermint
 
-It's like your favourite Mint, but a little spicy!
+This project was prepared for an interview for a Senior Staff Software Engineer position at Intuit. It contains a POC application that is deployed to Cloudflare along with [docs](https://dtychshenko.github.io/peppermint) and my background.
 
 ## Requirements
 
